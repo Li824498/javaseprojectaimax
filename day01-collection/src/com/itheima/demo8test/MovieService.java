@@ -27,13 +27,41 @@ public class MovieService {
                     queryMovie();
                     break;
                 case "4":
+                    deleteStar();
                     break;
                 case "5":
+                    showall();
+                case "6":
                     return;
                 default:
                     System.out.println("输入有误，请重新输入");
             }
         }
+    }
+
+    private void showall() {
+        for(Movie movie: movies){
+            System.out.println(movie);
+        }
+    }
+
+    private void deleteStar() {
+        System.out.println("请输入要封杀的明星");
+        String target = sc.next();
+//        for (Movie movie : movies) {
+//            if(movie.getActor().contains(target)) {
+//                movies.remove(movie);
+//            }
+//        }
+        for (int i = 0; i < movies.size(); i++) {
+            if(movies.get(i).getActor().contains(target)) {
+                movies.remove(i);
+                i--;
+            }
+        }
+
+        System.out.println("删除成功");
+        System.out.println(movies);
     }
 
     private void queryMovie() {
